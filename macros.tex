@@ -76,6 +76,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % tabularx
+\makeatletter
+\@ifpackageloaded{tabularx}{
 \def\tabularxp{\def\tabularxcolumn##1{p{##1}}}
 \def\tabularxm{\def\tabularxcolumn##1{m{##1}}}
 \def\tabularxb{\def\tabularxcolumn##1{b{##1}}}
@@ -89,17 +91,21 @@
 \newcommand\multicolc[1]{\multicolumn{1}{c}{#1}}
 \newcommand\multicolr[1]{\multicolumn{1}{r}{#1}}
 \newcommand\mc[2][c]{\multicolumn{1}{#1}{#2}}
+}{}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % math and units
-\def\Sp#1{\ensuremath{\sp{#1}}}
-\def\Sb#1{\ensuremath{\sb{#1}}}
-\def\km#1{km\Sp{#1}}
-\def\sgn{\mathop{\operator@font sgn}\nolimits}
-\def\st{\mid}
-\def\floor#1{\ensuremath{\left\lfloor#1\right\rfloor}}
-\def\ceil#1{\ensuremath{\left\lceil#1\right\rceil}}
-\def\set#1{\ensuremath{\left\{#1\right\}}}
+\let\oldsp\sp
+\renewcommand\sp[1]{\ensuremath{\oldsp{#1}}}
+\let\oldsb\sb
+\renewcommand\sb[1]{\ensuremath{\oldsb{#1}}}
+\newcommand\km[1]{km\Sp{#1}}
+\newcommand\sgn{\mathop{\operator@font sgn}\nolimits}
+\newcommand\st{\mid}
+\newcommand\floor[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand\ceil[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand\set[1]{\ensuremath{\left\{#1\right\}}}
 
 % https://tex.stackexchange.com/a/199810/254410
 \newcommand\matr[1]{\mathbf{#1}} % undergraduate algebra version
