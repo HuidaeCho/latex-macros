@@ -66,6 +66,11 @@
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% paragraph
+\let\oldparagraph\paragraph
+\renewcommand\paragraph[1]{\oldparagraph{#1.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % symbols
 % https://tex.stackexchange.com/a/146923/254410
 \newcommand\ssymbol[1]{\ensuremath{^{\@fnsymbol{#1}}}}
