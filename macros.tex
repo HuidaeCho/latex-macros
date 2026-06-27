@@ -101,10 +101,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % math and units
-\let\oldsp\sp
-\renewcommand\sp[1]{\ensuremath{\oldsp{#1}}}
-\let\oldsb\sb
-\renewcommand\sb[1]{\ensuremath{\oldsb{#1}}}
+\newcommand\Sp[1]{\ensuremath{\sp{#1}}}
+\newcommand\Sb[1]{\ensuremath{\sb{#1}}}
 \newcommand\km[1]{km\Sp{#1}}
 \newcommand\sgn{\mathop{\operator@font sgn}\nolimits}
 \newcommand\st{\mid}
