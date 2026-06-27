@@ -1,0 +1,181 @@
+% LaTeX macros by Huidae Cho
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% citation
+\def\eq#1{(\ref{eqn:#1})}
+%\def\eq#1{($eqn:#1$)}
+\def\eqn#1{Eq.~\eq{#1}}
+\def\@eqnsto(#1,#2){\if#2@(\ref{eqn:#1})\else(\ref{eqn:#1})--\@eqnsto(#2)\fi}
+\def\eqnsto#1{Eqs.~\@eqnsto(#1,@)}
+%\def\eqns{Eqs.}
+%\def\@eqnstwo(#1,#2){\eq{#1} and \eq{#2}}
+%\def\@eqns(#1,#2,#3){\eq{#1}, \@eqns(#2,#3)}
+\def\@eqns(#1,#2){\if#2@and \eq{#1}\else\eq{#1}, \@eqns(#2)\fi}
+\def\eqns#1{Eqs.~\@eqns(#1,@)}
+\def\@eqnsii(#1,#2){\eq{#1} and \eq{#2}}
+\def\eqnsii#1{Eqs.~\@eqnsii(#1)}
+
+\def\fig#1{Figure \ref{fig:#1}}
+\def\@figsto(#1,#2){\if#2@\ref{fig:#1}\else\ref{fig:#1}--\@figsto(#2)\fi}
+\def\figsto#1{Figures \@figsto(#1,@)}
+\def\@figs(#1,#2){\if#2@and \ref{fig:#1}\else\ref{fig:#1}, \@figs(#2)\fi}
+\def\figs#1{Figures \@figs(#1,@)}
+\def\@figsii(#1,#2){\ref{fig:#1} and \ref{fig:#2}}
+\def\figsii#1{Figures \@figsii(#1)}
+
+\def\tab#1{Table \ref{tab:#1}}
+\def\@tabsto(#1,#2){\if#2@\ref{tab:#1}\else\ref{tab:#1}--\@tabsto(#2)\fi}
+\def\tabsto#1{Tables \@tabsto(#1,@)}
+\def\@tabs(#1,#2){\if#2@and \ref{tab:#1}\else\ref{tab:#1}, \@tabs(#2)\fi}
+\def\tabs#1{Tables \@tabs(#1,@)}
+\def\@tabsii(#1,#2){\ref{tab:#1} and \ref{tab:#2}}
+\def\tabsii#1{Tables \@tabsii(#1)}
+
+\def\alg#1{Algorithm \ref{alg:#1}}
+\def\@algsto(#1,#2){\if#2@\ref{alg:#1}\else\ref{alg:#1}--\@algsto(#2)\fi}
+\def\algsto#1{Algorithms \@algsto(#1,@)}
+\def\@algs(#1,#2){\if#2@and \ref{alg:#1}\else\ref{alg:#1}, \@algs(#2)\fi}
+\def\algs#1{Algorithms \@algs(#1,@)}
+\def\@algsii(#1,#2){\ref{alg:#1} and \ref{alg:#2}}
+\def\algsii#1{Algorithms \@algsii(#1)}
+
+\def\sec#1{Section \ref{sec:#1}}
+\def\@secsto(#1,#2){\if#2@\ref{sec:#1}\else\ref{sec:#1}--\@secsto(#2)\fi}
+\def\secsto#1{Sections \@secsto(#1,@)}
+\def\@secs(#1,#2){\if#2@and \ref{sec:#1}\else\ref{sec:#1}, \@secs(#2)\fi}
+\def\secs#1{Sections \@secs(#1,@)}
+\def\@secsii(#1,#2){\ref{sec:#1} and \ref{sec:#2}}
+\def\secsii#1{Sections \@secsii(#1)}
+
+\def\subsec#1{Subsection \ref{subsec:#1}}
+\def\@subsecsto(#1,#2){\if#2@\ref{subsec:#1}\else\ref{subsec:#1}--\@subsecsto(#2)\fi}
+\def\subsecsto#1{Subsections \@subsecsto(#1,@)}
+\def\@subsecs(#1,#2){\if#2@and \ref{subsec:#1}\else\ref{subsec:#1}, \@subsecs(#2)\fi}
+\def\subsecs#1{Subsections \@subsecs(#1,@)}
+\def\@subsecsii(#1,#2){\ref{subsec:#1} and \ref{subsec:#2}}
+\def\subsecsii#1{Subsections \@subsecsii(#1)}
+
+\def\app#1{Appendix \ref{sec:#1}}
+\def\@appsto(#1,#2){\if#2@\ref{sec:#1}\else\ref{sec:#1}--\@appsto(#2)\fi}
+\def\appsto#1{Appendices \@appsto(#1,@)}
+\def\@apps(#1,#2){\if#2@and \ref{sec:#1}\else\ref{sec:#1}, \@apps(#2)\fi}
+\def\apps#1{Appendices \@apps(#1,@)}
+\def\@appsii(#1,#2){\ref{sec:#1} and \ref{sec:#2}}
+\def\appsii#1{Appendices \@appsii(#1)}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% symbols
+% https://tex.stackexchange.com/a/146923/254410
+\newcommand\ssymbol[1]{\ensuremath{^{\@fnsymbol{#1}}}}
+% defined in texmf-dist/tex/latex/base/latex.ltx
+%\def\@fnsymbol#1{\ensuremath{\ifcase#1\or *\or \dagger\or \ddagger\or
+%   \mathsection\or \mathparagraph\or \|\or **\or \dagger\dagger
+%   \or \ddagger\ddagger \else\@ctrerr\fi}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% tabularx
+\def\tabularxp{\def\tabularxcolumn##1{p{##1}}}
+\def\tabularxm{\def\tabularxcolumn##1{m{##1}}}
+\def\tabularxb{\def\tabularxcolumn##1{b{##1}}}
+%\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcolumntype{x}[1]{>{\setlength{\hsize}{#1\hsize}}X}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{y}[1]{>{\setlength{\hsize}{#1\hsize}\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{z}[1]{>{\setlength{\hsize}{#1\hsize}\raggedleft\arraybackslash}X}
+\newcommand\multicoll[1]{\multicolumn{1}{l}{#1}}
+\newcommand\multicolc[1]{\multicolumn{1}{c}{#1}}
+\newcommand\multicolr[1]{\multicolumn{1}{r}{#1}}
+\newcommand\mc[2][c]{\multicolumn{1}{#1}{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% math and units
+\def\Sp#1{\ensuremath{\sp{#1}}}
+\def\Sb#1{\ensuremath{\sb{#1}}}
+\def\km#1{km\Sp{#1}}
+\def\sgn{\mathop{\operator@font sgn}\nolimits}
+\def\st{\mid}
+\def\floor#1{\ensuremath{\left\lfloor#1\right\rfloor}}
+\def\ceil#1{\ensuremath{\left\lceil#1\right\rceil}}
+\def\set#1{\ensuremath{\left\{#1\right\}}}
+
+% https://tex.stackexchange.com/a/199810/254410
+\newcommand\matr[1]{\mathbf{#1}} % undergraduate algebra version
+%\newcommand\matr[1]{#1}          % pure math version
+%\newcommand\matr[1]{\bm{#1}}     % ISO complying version
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% siunitx
+\newcommand\sqkm{\si{\kilo\meter\squared}}
+\newcommand\cms{\si{\meter\cubed\per\second}}
+\newcommand\cmd{\si{\meter\cubed\per\day}}
+\newcommand\m{\si{\meter}}
+\newcommand\qtyeqn[2]{\qty[parse-numbers=false]{#1}{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% percent
+\newcommand\pct[1]{#1\%}
+\newcommand\pctrange[2]{#1\%--#2\%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% algpseudocode
+\makeatletter
+\@ifpackageloaded{algpseudocodex}{
+%% https://tex.stackexchange.com/a/20004/254410
+%% declaration of a new block
+%\algblock{ParFor}{EndParFor}
+%% customising the new block
+%\algnewcommand\algorithmicparfor{\textbf{parfor}}
+%\algnewcommand\algorithmicpardo{\textbf{do}}
+%\algnewcommand\algorithmicendparfor{\textbf{end\ parfor}}
+%\algrenewtext{ParFor}[1]{\algorithmicparfor\ #1\ \algorithmicpardo}
+%\algrenewtext{EndParFor}{\algorithmicendparfor}
+
+% https://tex.stackexchange.com/a/68107/254410
+\algblockdefx{ParFor}{EndParFor}[1]{\textbf{parfor} #1}{\textbf{end parfor}}
+\algblockdefx{Task}{EndTask}[1]{\textbf{task} #1}{\textbf{end task}}
+\algblockdefx{Critical}{EndCritical}[1]{\textbf{critical} #1}{\textbf{end critical}}
+\newcommand\To{\textbf{to}\ }
+\newcommand\Continue{\State \textbf{continue}}
+\newcommand\Break{\State \textbf{break}}
+\newcommand\IfThen[2]{\State \textbf{if} #1 \textbf{then} #2}
+\newcommand\IfContinue[1]{\State \textbf{if} #1 \textbf{then} \textbf{continue}}
+\newcommand\IfBreak[1]{\State \textbf{if} #1 \textbf{then} \textbf{break}}
+\newcommand\Global[1]{\textbf{global} #1}
+\newcommand\bitor{\mathop{\dot\lor}}
+\newcommand\bitand{\mathop{\dot\land}}
+\newcommand\bitnot{\mathop{\dot\lnot}}
+\newcommand\atomicgets{\xleftarrow{\text{atomic}}}
+}{}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% links
+\newcommand\link[2]{\href{#1}{\nolinkurl{#2}}}
+\newcommand\email[1]{\link{mailto:#1}{#1}}
+\newcommand\doi[1]{\link{https://doi.org/#1}{doi:#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% tikz
+\newcommand\halo[1]{\contour{white}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO
+\newcommand\TODO[1]{\textcolor{red}{TODO: #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% journal submission
+\newif\ifpdf
+\newif\ifcsvtikz
+\newcommand\inputtikz[1]{%
+  \ifpdf%
+    \includegraphics{#1}%
+  \else%
+    \ifcsvtikz%
+      \IfFileExists{csv-#1}{\input{csv-#1}}{\input{#1}}%
+    \else%
+      \input{#1}%
+    \fi%
+  \fi}
