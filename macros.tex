@@ -83,9 +83,9 @@
 % tabularx
 \makeatletter
 \@ifpackageloaded{tabularx}{
-\def\tabularxp{\def\tabularxcolumn##1{p{##1}}}
-\def\tabularxm{\def\tabularxcolumn##1{m{##1}}}
-\def\tabularxb{\def\tabularxcolumn##1{b{##1}}}
+\newcommand\tabularxp{\newcommand\tabularxcolumn[1]{p{##1}}}
+\newcommand\tabularxm{\newcommand\tabularxcolumn[1]{m{##1}}}
+\newcommand\tabularxb{\newcommand\tabularxcolumn[1]{b{##1}}}
 %\renewcommand\tabularxcolumn[1]{m{#1}}
 \newcolumntype{x}[1]{>{\setlength{\hsize}{#1\hsize}}X}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
